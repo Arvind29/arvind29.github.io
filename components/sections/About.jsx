@@ -15,11 +15,9 @@ export default function About() {
                 Currently, I work as a Security Engineer at Swimlane, building and maintaining security automation workflows on the Swimlane Turbine SOAR platform. My expertise spans detection engineering, API integrations, playbook development, and threat intelligence automation.
               </p>
               <p>
-                I'm passionate about building practical tools that solve real security problems. On the side, I run a technical blog (<a href="https://cyberinfo.wordpress.com" target="_blank" rel="noopener noreferrer">CyberInfo</a>) covering security automation, SOAR, APIs, and DevOps.
+                I am passionate about building practical tools that solve real security problems. On the side, I run a technical blog (<a href="https://cyberinfo.wordpress.com" target="_blank" rel="noopener noreferrer">CyberInfo</a>) covering security automation, SOAR, APIs, and DevOps.
               </p>
-              <p>
-                When I'm not automating security workflows, you'll find me building full-stack web applications, contributing to open-source projects, or exploring the Indian equity markets.
-              </p>
+
             </div>
           </div>
           <div className="col-lg-6">

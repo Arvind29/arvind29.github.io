@@ -8,7 +8,7 @@ export default function Contact() {
       <div className="container-lg">
         <div className="row">
           <div className="col-lg-8 offset-lg-2">
-            <h2 className="section-title text-center mb-5">Let's Connect</h2>
+            <h2 className="section-title text-center mb-5">Lets Connect</h2>
 
             <div className="row text-center mb-5">
               <div className="col-md-6 mb-4 mb-md-0">
