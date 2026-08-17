@@ -1,0 +1,66 @@
+{
+  "site": {
+    "name": "Arvind29",
+    "title": "Arvind - Security Engineer & SOAR Specialist",
+    "description": "Portfolio and technical hub for security automation, SOAR platforms, cybersecurity, and DevOps.",
+    "author": "Arvind Pande",
+    "url": "https://arvind29.github.io",
+    "email": "pandearvind098@gmail.dev",
+    "tagline": "Automating Security. Engineering Detection. Building Tools.",
+    "bio": "Security Engineer with deep expertise in SOAR platforms (Swimlane Turbine), detection engineering, and security automation. Passionate about building practical tools and sharing knowledge through technical writing."
+  },
+  "social": {
+    "github": {
+      "url": "https://github.com/Arvind29",
+      "icon": "🔗",
+      "label": "GitHub"
+    },
+    "linkedin": {
+      "url": "https://linkedin.com/in/arvind29",
+      "icon": "💼",
+      "label": "LinkedIn"
+    },
+    "twitter": {
+      "url": "https://twitter.com/arvind29",
+      "icon": "🐦",
+      "label": "Twitter"
+    },
+    "blog": {
+      "url": "https://cyberunfo.wordpress.com",
+      "icon": "📝",
+      "label": "Blog"
+    },
+    "email": {
+      "url": "mailto:pandearvind098@gmail.com",
+      "icon": "✉️",
+      "label": "Email"
+    }
+  },
+  "nav": [
+    {
+      "label": "Home",
+      "href": "/",
+      "icon": "🏠"
+    },
+    {
+      "label": "About",
+      "href": "#about",
+      "icon": "👤"
+    },
+    {
+      "label": "Projects",
+      "href": "#projects",
+      "icon": "🚀"
+    },
+    {
+      "label": "Blog",
+      "href": "#blog",
+      "icon": "📚"
+    },
+    {
+      "label": "Contact",
+      "href": "#contact",
+      "icon": "💬"
+    }
+  ]
+}

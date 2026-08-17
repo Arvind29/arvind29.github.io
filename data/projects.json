@@ -1,0 +1,58 @@
+{
+  "projects": [
+    {
+      "id": "cyber-research-assistant",
+      "title": "AI Cyber Research Assistant",
+      "description": "Next.js + FastAPI web app for cybersecurity research. Integrated with Apify's Google Search Scraper. Features CVE lookup, MITRE ATT&CK mapping, CISA advisories. Backend orchestrates threat intelligence workflows.",
+      "tags": ["Next.js", "FastAPI", "Apify API", "Cybersecurity", "Python"],
+      "github": "https://github.com/Arvind29/cyber-research-assistant",
+      "demo": "https://cyber-research-assistant.up.railway.app",
+      "status": "In Progress"
+    },
+    {
+      "id": "youtube-smart-search",
+      "title": "YouTube Smart Search",
+      "description": "FastAPI-powered app for searching YouTube videos and extracting transcripts. Includes bot-detection workarounds, transcript caching, and Bootstrap 5 UI. Deployed on Railway.",
+      "tags": ["FastAPI", "YouTube API", "Python", "Bootstrap", "Railway"],
+      "github": "https://github.com/Arvind29/yt-search-n-transcript",
+      "demo": "https://smart-yt.up.railway.app",
+      "status": "Live"
+    },
+    {
+      "id": "timeforge",
+      "title": "TimeForge - Unix Timestamp Converter",
+      "description": "Lightweight utility for converting Unix timestamps to human-readable dates and vice versa. FastAPI backend, responsive web UI. Deployed via Railway.",
+      "tags": ["FastAPI", "Python", "Timestamp", "Utility"],
+      "github": "https://github.com/Arvind29/timeforge",
+      "demo": "https://timeforge.up.railway.app",
+      "status": "Live"
+    },
+    {
+      "id": "shodan-mcp",
+      "title": "Shodan MCP Server",
+      "description": "Model Context Protocol server for Shodan integration. Exposes 4 tools: lookup_ip, lookup_domain, analyze_risk, search_query. Enables Claude and other MCP clients to query Shodan threat data.",
+      "tags": ["MCP", "Shodan", "Threat Intelligence", "Python"],
+      "github": "https://github.com/Arvind29/shodan-mcp",
+      "demo": null,
+      "status": "Live"
+    },
+    {
+      "id": "cyberinfo-blog",
+      "title": "CyberInfo Blog Website",
+      "description": "Next.js 14 portfolio + blog site. Notion database as headless CMS. Covers security automation, SOAR, APIs, detection engineering, DevOps. Professional, mobile-responsive design.",
+      "tags": ["Next.js", "Notion CMS", "Blog", "Security", "MDX"],
+      "github": "https://github.com/Arvind29/cyberinfo-blog",
+      "demo": "https://cyberinfo.dev",
+      "status": "Active"
+    },
+    {
+      "id": "swimlane-sentinel-one",
+      "title": "SentinelOne SDL Sweeper - Swimlane Turbine",
+      "description": "Production SOAR automation in Swimlane Turbine. IOC sweeper using SentinelOne SDL v2 LRQ API. Handles TTL expiration, dataset query tagging, and high-volume threat intelligence ingestion.",
+      "tags": ["Swimlane Turbine", "SOAR", "SentinelOne", "Detection Engineering"],
+      "github": null,
+      "demo": null,
+      "status": "Production"
+    }
+  ]
+}

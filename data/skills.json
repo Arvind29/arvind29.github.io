@@ -1,0 +1,73 @@
+{
+  "skills": [
+    {
+      "category": "SOAR & Security Automation",
+      "icon": "⚡",
+      "items": [
+        "Swimlane Turbine",
+        "Playbook/Flow Development",
+        "Detection Engineering",
+        "Alert Tuning & Risk Scoring",
+        "Security Orchestration"
+      ]
+    },
+    {
+      "category": "Languages & Frameworks",
+      "icon": "💻",
+      "items": [
+        "Python",
+        "FastAPI",
+        "Next.js / React",
+        "JavaScript",
+        "SQL",
+        "Bash/Shell"
+      ]
+    },
+    {
+      "category": "Security Tools & Integrations",
+      "icon": "🔧",
+      "items": [
+        "SentinelOne",
+        "VirusTotal",
+        "WHOIS",
+        "Shodan",
+        "Apify",
+        "Threat Intelligence APIs"
+      ]
+    },
+    {
+      "category": "DevOps & Infrastructure",
+      "icon": "🚀",
+      "items": [
+        "GitHub Actions",
+        "Railway Deployment",
+        "Docker",
+        "CI/CD Pipelines",
+        "API Development"
+      ]
+    },
+    {
+      "category": "Additional Expertise",
+      "icon": "🎯",
+      "items": [
+        "MCP (Model Context Protocol)",
+        "REST API Design",
+        "Data Extraction & Scraping",
+        "Bot Detection Workarounds",
+        "Technical Content Writing"
+      ]
+    },
+    {
+      "category": "Threat Intelligence & Monitoring",
+      "icon": "🛡️",
+      "items": [
+        "SIEM Analysis (Splunk)",
+        "EDR/EPP Platforms",
+        "Threat Hunting",
+        "MITRE ATT&CK Framework",
+        "Log Analysis & Parsing",
+        "Real-time Alert Monitoring"
+      ]
+    }
+  ]
+}
