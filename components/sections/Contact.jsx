@@ -15,7 +15,7 @@ export default function Contact() {
                 <div className="card border-0 bg-light">
                   <div className="card-body">
                     <h5 className="card-title">Email</h5>
-                    <p className="text-muted">Let's chat about security automation and SOAR platforms</p>
+                    <p className="text-muted">Lets chat about security automation and SOAR platforms</p>
                     <a href={siteConfig.social.email} className="btn btn-primary btn-sm">
                       Send Email
                     </a>
