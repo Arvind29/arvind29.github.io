@@ -8,33 +8,32 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light">
-      <div className="container-lg">
-        <Link href="/" className="navbar-brand">
+    <header className="site-header">
+      <nav className="site-nav" aria-label="Main navigation">
+        <Link href="/" className="brand" onClick={() => setIsOpen(false)}>
           {siteConfig.site.name}
+          <small>Security. Automation. AI.</small>
         </Link>
+
         <button
-          className="navbar-toggler"
+          className="menu-button"
           type="button"
           onClick={() => setIsOpen(!isOpen)}
-          aria-controls="navbarNav"
           aria-expanded={isOpen}
+          aria-controls="main-menu"
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon"></span>
+          <span></span><span></span><span></span>
         </button>
-        <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="navbarNav">
-          <ul className="navbar-nav ms-auto">
-            {siteConfig.nav.map((item, index) => (
-              <li className="nav-item" key={index}>
-                <Link href={item.href} className="nav-link" onClick={() => setIsOpen(false)}>
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+
+        <div id="main-menu" className={`menu ${isOpen ? 'menu-open' : ''}`}>
+          {siteConfig.navigation.map((item) => (
+            <Link key={item.label} href={item.href} onClick={() => setIsOpen(false)}>
+              {item.label}
+            </Link>
+          ))}
         </div>
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
 }
