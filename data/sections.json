@@ -1,0 +1,27 @@
+{
+  "articles": {
+    "label": "Articles",
+    "title": "Technical writing and guides",
+    "description": "Practical articles on security automation, SOAR, AI, APIs and the technologies I work with.",
+    "href": "#articles"
+  },
+  "work": {
+    "label": "Work",
+    "title": "Projects and automation",
+    "description": "Projects, security automations and engineering solutions — from SOAR playbooks to AI-powered tools and integrations.",
+    "href": "#work"
+  },
+  "blog": {
+    "label": "Blog",
+    "title": "CyberUnfo",
+    "description": "My external blog for cybersecurity, automation, technology and practical learning.",
+    "href": "https://cyberunfo.wordpress.com/",
+    "external": true
+  },
+  "contact": {
+    "label": "Contact",
+    "title": "Let's connect",
+    "description": "For professional opportunities, collaborations or conversations about security and automation.",
+    "href": "#contact"
+  }
+}
