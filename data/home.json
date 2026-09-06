@@ -7,7 +7,7 @@
   "description": "I design and build security automation solutions that connect SOAR, SIEM, threat intelligence, APIs and AI — turning complex security challenges into scalable, efficient and impactful outcomes.",
   "primaryCta": { "label": "Explore My Work", "href": "#work" },
   "secondaryCta": { "label": "Read Latest Articles", "href": "#articles" },
-  "photo": "/images/avatar-placeholder.svg",
+  "photo": "/images/avatar.png",
   "photoAlt": "Arvind - Security Automation Engineer",
   "photoCaption": "BUILD · LEARN · AUTOMATE · SHARE"
 }
