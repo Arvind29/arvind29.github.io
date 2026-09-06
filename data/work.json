@@ -1,0 +1,14 @@
+[
+  {
+    "title": "AI Cyber Research Assistant",
+    "description": "AI-assisted security research and investigation using RAG, LLMs and security-focused workflows.",
+    "technologies": ["Python", "RAG", "LLM", "MCP"],
+    "url": "https://github.com/Arvind29"
+  },
+  {
+    "title": "Security Automation & SOAR",
+    "description": "Security operations automations connecting SIEM, SOAR, threat intelligence, APIs and ITSM workflows.",
+    "technologies": ["Swimlane", "Splunk", "REST API", "Automation"],
+    "url": "https://github.com/Arvind29"
+  }
+]
