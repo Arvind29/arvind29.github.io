@@ -11,7 +11,7 @@ export default function Navbar() {
     <header className="site-header">
       <nav className="site-nav" aria-label="Main navigation">
         <Link href="/" className="brand" onClick={() => setIsOpen(false)}>
-          {siteConfig.site.name}
+          <span className="brand-name">Arvind<span className="brand-dot">.</span></span>
           <small>Security. Automation. AI.</small>
         </Link>
 
