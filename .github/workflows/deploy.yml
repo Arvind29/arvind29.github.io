@@ -5,6 +5,10 @@ on:
     branches:
       - main
       - redesign-v2
+  pull_request:
+    branches:
+      - main
+      - redesign-v2
 
 permissions:
   contents: read
@@ -38,7 +42,7 @@ jobs:
           path: ./out
 
   deploy:
-    if: github.ref == 'refs/heads/main'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
