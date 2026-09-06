@@ -40,8 +40,10 @@ a:hover { color: inherit; }
   align-items: center;
   justify-content: space-between;
 }
-.brand { font-size: 1.55rem; font-weight: 700; letter-spacing: -.03em; }
-.brand small { display: block; color: var(--muted); font-size: .72rem; font-weight: 400; letter-spacing: .02em; }
+.brand { display: block; }
+.brand-name { display: block; color: var(--text); font-size: 1.55rem; font-weight: 700; letter-spacing: -.03em; line-height: 1.1; }
+.brand-dot { color: var(--green); }
+.brand small { display: block; color: var(--green); font-size: .72rem; font-weight: 500; letter-spacing: .02em; margin-top: 4px; }
 .menu { display: flex; gap: 34px; align-items: center; }
 .menu a { color: #c6d1da; font-size: .94rem; transition: color .2s ease; }
 .menu a:hover { color: var(--text); }
