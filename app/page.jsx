@@ -7,13 +7,13 @@ function Arrow() {
   return <span aria-hidden="true">→</span>;
 }
 
-function Destination({ item, className = '' }) {
+function Destination({ item, id, className = '' }) {
   const props = item.external
     ? { href: item.href, target: '_blank', rel: 'noopener noreferrer' }
     : { href: item.href };
 
   return (
-    <a className={`destination ${className}`} {...props}>
+    <a id={id} className={`destination ${className}`} {...props}>
       <div>
         <span className="destination-label">{item.label}</span>
         <h2>{item.title}</h2>
@@ -53,17 +53,16 @@ export default function Home() {
       </section>
 
       <section className="destinations" aria-label="Portfolio sections">
-        <Destination item={sections.articles} className="articles" />
-        <Destination item={sections.work} className="work" />
-        <Destination item={sections.blog} className="blog" />
-        <Destination item={sections.contact} className="contact" />
+        <Destination item={sections.articles} id="articles" className="articles" />
+        <Destination item={sections.work} id="work" className="work" />
+        <Destination item={sections.blog} id="blog" className="blog" />
+        <Destination item={sections.contact} id="contact-link" className="contact" />
       </section>
 
-      <section className="content-preview" id="articles">
+      <section className="content-preview" aria-labelledby="articles-title">
         <div className="section-heading">
           <p className="eyebrow">LATEST</p>
-          <h2>Articles</h2>
-          <a href="#articles">View all <Arrow /></a>
+          <h2 id="articles-title">Articles</h2>
         </div>
         <div className="article-list">
           {articles.slice(0, 3).map((article) => (
@@ -76,11 +75,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="content-preview" id="work">
+      <section className="content-preview" aria-labelledby="work-title">
         <div className="section-heading">
           <p className="eyebrow">SELECTED</p>
-          <h2>Work</h2>
-          <a href="#work">View all <Arrow /></a>
+          <h2 id="work-title">Work</h2>
         </div>
         <div className="work-list">
           {work.map((project) => (
@@ -96,10 +94,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="contact-section" id="contact">
+      <section className="contact-section" id="contact" aria-labelledby="contact-title">
         <p className="eyebrow">CONTACT</p>
-        <h2>Let's connect.</h2>
-        <p>For professional opportunities, collaborations or conversations about security automation and AI.</p>
+        <h2 id="contact-title">Let's connect.</h2>
+        <p>{sections.contact.description}</p>
         <a className="button button-primary" href="mailto:pandearvind098@gmail.com">Get in touch <Arrow /></a>
       </section>
     </main>
