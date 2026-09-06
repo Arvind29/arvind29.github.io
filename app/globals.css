@@ -43,7 +43,7 @@ a:hover { color: inherit; }
 .brand { display: block; }
 .brand-name { display: block; color: var(--text); font-size: 1.55rem; font-weight: 700; letter-spacing: -.03em; line-height: 1.1; }
 .brand-dot { color: var(--green); }
-.brand small { display: block; color: var(--green); font-size: .72rem; font-weight: 500; letter-spacing: .02em; margin-top: 4px; }
+.brand small { display: block; color: #a8b1ba; font-family: Poppins, Inter, sans-serif; font-size: .84rem; font-weight: 500; letter-spacing: .01em; line-height: 1.3; margin-top: 6px; }
 .menu { display: flex; gap: 34px; align-items: center; }
 .menu a { color: #c6d1da; font-size: .94rem; transition: color .2s ease; }
 .menu a:hover { color: var(--text); }
