@@ -1,5 +1,11 @@
 [
   {
+    "title": "API Rate Limiting for Reliable SOAR Automation",
+    "description": "How rate limits, queues, bounded concurrency, and backoff keep security automation reliable under API constraints.",
+    "date": "2026-09-08",
+    "url": "/articles/api-rate-limiting"
+  },
+  {
     "title": "Integration Patterns: Fan-Out and Fan-In for Reliable Automation",
     "description": "How parallel enrichment, API orchestration, partial failures, and correlation help build resilient security automation workflows.",
     "date": "2026-09-07",
