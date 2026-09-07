@@ -3,7 +3,7 @@
     "title": "Integration Patterns: Fan-Out and Fan-In for Reliable Automation",
     "description": "How parallel enrichment, API orchestration, partial failures, and correlation help build resilient security automation workflows.",
     "date": "2026-09-07",
-    "url": "https://app.notion.com/p/3d44fd847fff81549e39f63342b71aff?pvs=204"
+    "url": "/articles/fan-out-fan-in"
   },
   {
     "title": "Building Security Automation with SOAR",
