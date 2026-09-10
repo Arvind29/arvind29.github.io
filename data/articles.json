@@ -1,5 +1,11 @@
 [
   {
+    "title": "SOAR API Tools: A Practical Framework for Reliable Integrations",
+    "description": "A practical framework for secure, reliable SOAR API integrations using authentication, validation, retries, idempotency, and observability.",
+    "date": "2026-09-10",
+    "url": "/articles/soar-api-tools"
+  },
+  {
     "title": "API Rate Limiting for Reliable SOAR Automation",
     "description": "How rate limits, queues, bounded concurrency, and backoff keep security automation reliable under API constraints.",
     "date": "2026-09-08",
@@ -10,11 +16,5 @@
     "description": "How parallel enrichment, API orchestration, partial failures, and correlation help build resilient security automation workflows.",
     "date": "2026-09-07",
     "url": "/articles/fan-out-fan-in"
-  },
-  {
-    "title": "Building Security Automation with SOAR",
-    "description": "Practical lessons from designing and operating security automation workflows.",
-    "date": "2026-01-01",
-    "url": "#"
   }
 ]
