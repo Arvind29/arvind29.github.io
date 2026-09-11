@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="footer-inner">
         <div>
           <div className="footer-brand">{siteConfig.site.name}</div>
-          <small>Security. Automation. AI.</small>
+          <small className="footer-tagline">Security. Automation. AI.</small>
         </div>
         <div className="footer-links">
           <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer">GitHub</a>
