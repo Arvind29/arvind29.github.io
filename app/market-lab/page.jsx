@@ -5,9 +5,9 @@ import Link from 'next/link';
 import styles from './market.module.css';
 
 const examples = {
-  POLYCAB: { growth: 24, roce: 26, debt: 0.05, margin: 13, pe: 42 },
-  TCS: { growth: 12, roce: 49, debt: 0.09, margin: 27, pe: 25 },
-  HDFCBANK: { growth: 17, roce: 8, debt: 0, margin: 31, pe: 20 },
+  POLYCAB: { name: 'Polycab India', growth: 24, roce: 26, debt: 0.05, margin: 13, pe: 42 },
+  TCS: { name: 'Tata Consultancy Services', growth: 12, roce: 49, debt: 0.09, margin: 27, pe: 25 },
+  HDFCBANK: { name: 'HDFC Bank', growth: 17, roce: 8, debt: 0, margin: 31, pe: 20 },
 };
 
 function score({ growth, roce, debt, margin, pe }) {
@@ -23,72 +23,93 @@ function score({ growth, roce, debt, margin, pe }) {
 export default function MarketLab() {
   const [symbol, setSymbol] = useState('POLYCAB');
   const [data, setData] = useState(examples.POLYCAB);
+  const [checked, setChecked] = useState(true);
 
   const quality = useMemo(() => score(data), [data]);
-  const verdict = quality >= 75 ? 'GOOD QUALITY' : quality >= 55 ? 'WATCH' : 'WEAK';
+  const verdict = quality >= 75 ? 'PASS' : quality >= 55 ? 'WATCH' : 'FAIL';
   const verdictClass = quality >= 75 ? styles.good : quality >= 55 ? styles.watch : styles.weak;
 
-  const update = (key, value) => setData((d) => ({ ...d, [key]: Number(value) }));
+  const update = (key, value) => {
+    setChecked(false);
+    setData((d) => ({ ...d, [key]: Number(value) }));
+  };
 
   const loadExample = (name) => {
     setSymbol(name);
     setData(examples[name]);
+    setChecked(true);
+  };
+
+  const check = () => {
+    const key = symbol.trim().toUpperCase();
+    if (examples[key]) {
+      loadExample(key);
+    } else {
+      setChecked(true);
+    }
   };
 
   return (
     <main className={styles.page}>
-      <div className={styles.card}>
-        <Link href="/" className={styles.back}>← Arvind.</Link>
-        <p className={styles.eyebrow}>MARKET LAB · QUICK CHECK</p>
-        <h1>Should I research this stock?</h1>
-        <p className={styles.intro}>A simple rule-based first filter. It is not a BUY recommendation and does not replace detailed research.</p>
+      <div className={styles.shell}>
+        <header className={styles.topbar}>
+          <Link href="/" className={styles.brand}><span className={styles.brandDot} />Arvind.</Link>
+          <span className={styles.localBadge}>LOCAL TOOL · NO INTERNET REQUIRED</span>
+        </header>
 
-        <div className={styles.inputRow}>
-          <input value={symbol} onChange={(e) => setSymbol(e.target.value.toUpperCase())} placeholder="Stock symbol" />
-          <button onClick={() => loadExample(examples[symbol] ? symbol : 'POLYCAB')}>Check</button>
-        </div>
-
-        <div className={styles.examples}>
-          <span>Try:</span>
-          {Object.keys(examples).map((name) => <button key={name} onClick={() => loadExample(name)}>{name}</button>)}
-        </div>
-
-        <section className={styles.result}>
-          <div className={styles.score}>
-            <small>QUALITY SCORE</small>
-            <strong>{quality}</strong><span>/100</span>
-          </div>
-          <div>
-            <p className={styles.label}>FIRST FILTER</p>
-            <h2 className={verdictClass}>{verdict}</h2>
-            <p className={styles.note}>{quality >= 75 ? 'Business quality clears the basic filter. Check valuation and future growth before investing.' : quality >= 55 ? 'Some parameters are attractive. Do deeper research before taking a position.' : 'The basic quality filter is not strong enough yet.'}</p>
-          </div>
+        <section className={styles.hero}>
+          <p className={styles.eyebrow}>MARKET RESEARCH · FUNDAMENTAL FILTER</p>
+          <h1>Stock Quality<br /><span>Quick Check</span></h1>
+          <p className={styles.lead}>A lightweight decision-support tool for your first-pass stock research. Enter the five numbers you care about and get a consistent quality signal.</p>
         </section>
 
-        <section className={styles.metrics}>
-          <Metric label="5Y Growth" value={data.growth} suffix="%" onChange={(v) => update('growth', v)} />
-          <Metric label="ROCE" value={data.roce} suffix="%" onChange={(v) => update('roce', v)} />
-          <Metric label="Debt / Equity" value={data.debt} suffix="" step="0.01" onChange={(v) => update('debt', v)} />
-          <Metric label="Operating Margin" value={data.margin} suffix="%" onChange={(v) => update('margin', v)} />
-          <Metric label="P/E" value={data.pe} suffix="×" onChange={(v) => update('pe', v)} />
+        <section className={styles.workspace}>
+          <div className={styles.inputPanel}>
+            <div className={styles.sectionHead}><span>01</span><div><b>STOCK</b><small>Enter a symbol or use a sample</small></div></div>
+            <div className={styles.stockInput}>
+              <span>NSE</span>
+              <input value={symbol} onChange={(e) => setSymbol(e.target.value.toUpperCase())} onKeyDown={(e) => e.key === 'Enter' && check()} placeholder="e.g. POLYCAB" />
+              <button onClick={check}>Check</button>
+            </div>
+            <div className={styles.samples}><span>Samples</span>{Object.keys(examples).map((name) => <button key={name} onClick={() => loadExample(name)}>{name}</button>)}</div>
+            <div className={styles.divider} />
+            <div className={styles.sectionHead}><span>02</span><div><b>FUNDAMENTALS</b><small>Use consistent period definitions</small></div></div>
+            <div className={styles.metrics}>
+              <Metric label="5Y Growth" value={data.growth} suffix="%" onChange={(v) => update('growth', v)} />
+              <Metric label="ROCE" value={data.roce} suffix="%" onChange={(v) => update('roce', v)} />
+              <Metric label="Debt / Equity" value={data.debt} suffix="" step="0.01" onChange={(v) => update('debt', v)} />
+              <Metric label="Operating Margin" value={data.margin} suffix="%" onChange={(v) => update('margin', v)} />
+              <Metric label="P / E" value={data.pe} suffix="×" onChange={(v) => update('pe', v)} />
+            </div>
+          </div>
+
+          <aside className={styles.resultPanel}>
+            <div className={styles.resultTop}><span>RESEARCH SIGNAL</span><span className={styles.live}><i />LOCAL CALCULATION</span></div>
+            <div className={styles.stockName}><small>{symbol || 'STOCK'}</small><h2>{data.name || 'Custom stock'}</h2></div>
+            <div className={styles.scoreRow}>
+              <div className={styles.scoreRing}><strong>{quality}</strong><span>/100</span></div>
+              <div><p>QUALITY SCORE</p><h3 className={verdictClass}>{checked ? verdict : 'EDITING'}</h3></div>
+            </div>
+            <div className={styles.signalBox}>
+              <span>{quality >= 75 ? '✓' : quality >= 55 ? '!' : '×'}</span>
+              <div><b>{quality >= 75 ? 'Quality clears your first filter.' : quality >= 55 ? 'Mixed fundamentals need validation.' : 'Fundamentals do not clear the first filter.'}</b><small>{quality >= 75 ? 'Proceed to business quality, valuation and risk analysis.' : 'Do not make a decision from this screen alone.'}</small></div>
+            </div>
+            <div className={styles.scoreBreakdown}>
+              <div><span>Growth</span><b>{data.growth >= 15 ? '25' : data.growth >= 10 ? '17' : data.growth >= 5 ? '10' : '0'} / 25</b></div>
+              <div><span>ROCE</span><b>{data.roce >= 20 ? '25' : data.roce >= 15 ? '18' : data.roce >= 10 ? '10' : '0'} / 25</b></div>
+              <div><span>Balance sheet</span><b>{data.debt <= 0.25 ? '20' : data.debt <= 0.5 ? '12' : data.debt <= 1 ? '6' : '0'} / 20</b></div>
+              <div><span>Margin</span><b>{data.margin >= 20 ? '15' : data.margin >= 12 ? '9' : data.margin >= 8 ? '5' : '0'} / 15</b></div>
+              <div><span>Valuation</span><b>{data.pe <= 25 ? '15' : data.pe <= 35 ? '9' : data.pe <= 50 ? '4' : '0'} / 15</b></div>
+            </div>
+          </aside>
         </section>
 
-        <div className={styles.rules}>
-          <b>How it scores</b>
-          <span>Growth 25</span><span>ROCE 25</span><span>Debt 20</span><span>Margin 15</span><span>Valuation 15</span>
-        </div>
-
-        <p className={styles.disclaimer}>Demo data only. For a real version, the next step is connecting a trusted market-data source instead of entering numbers manually.</p>
+        <footer className={styles.footer}><span>DECISION FRAMEWORK</span><b>Quality → Valuation → Business → Risk → Position Size</b><small>Runs entirely in your local browser. No API key, login, database or cloud service.</small></footer>
       </div>
     </main>
   );
 }
 
 function Metric({ label, value, suffix, step = '0.1', onChange }) {
-  return (
-    <label className={styles.metric}>
-      <span>{label}</span>
-      <div><input type="number" value={value} step={step} min="0" onChange={(e) => onChange(e.target.value)} /><b>{suffix}</b></div>
-    </label>
-  );
+  return <label className={styles.metric}><span>{label}</span><div><input type="number" value={value} step={step} min="0" onChange={(e) => onChange(e.target.value)} /><b>{suffix}</b></div></label>;
 }
