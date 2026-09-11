@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Configuration-Driven Python Automation | Arvind Pande',
+  title: 'Python Automation: Turning Hard-Coded Scripts into Configuration-Driven Workflows | Arvind Pande',
   description: 'How configuration-driven design makes Python automation reusable, maintainable, and production-ready for security operations.',
 };
 
@@ -11,39 +11,180 @@ export default function ArticlePage() {
       <article className="article-content">
         <Link href="/#articles" className="article-back">← Back to Articles</Link>
         <p className="eyebrow">PYTHON AUTOMATION · 11 SEP 2026</p>
-        <h1>Configuration-Driven Python Automation: From Scripts to Reusable Automation</h1>
-        <p className="article-lead">How separating automation logic from configuration makes Python workflows easier to reuse, test, operate, and scale across security environments.</p>
+        <h1>Python Automation: Turning Hard-Coded Scripts into Configuration-Driven Workflows</h1>
+        <p className="article-lead">A practical approach to making Python automation reusable, maintainable, and safer to operate across tenants, environments, APIs, and security workflows.</p>
+
+        <p><strong>Category:</strong> Python Automation</p>
+        <p><strong>Focus:</strong> Maintainability · Reusability · SOAR Engineering</p>
+
+        <p>A Python automation often starts as a simple script:</p>
+        <p><strong>Read an IOC → call an API → process the response → take an action.</strong></p>
+
+        <p>The problem appears when the same automation needs to run against different tenants, environments, APIs, thresholds, or use cases.</p>
+        <p>Instead of creating multiple scripts, a better approach is to make the logic reusable and the configuration changeable.</p>
 
         <h2>The Problem with Hard-Coded Automation</h2>
-        <p>Many automation projects begin as a simple script: receive an IOC, call an API, process the response, and take an action. The design becomes fragile when the same workflow must support different tenants, environments, API endpoints, thresholds, or operational policies.</p>
-        <p>Creating a separate script for every variation increases duplication and makes production changes harder to control.</p>
+        <p>Consider a script containing:</p>
+        <pre><code>{`API_URL = "https://api.example.com"
+TIMEOUT = 30
+MALICIOUS_THRESHOLD = 80
+TENANT = "production"`}</code></pre>
+
+        <p>It works, but changes become expensive.</p>
+        <p>A small requirement such as:</p>
+        <ul>
+          <li>use another tenant</li>
+          <li>change the timeout</li>
+          <li>modify the confidence threshold</li>
+          <li>test against another environment</li>
+        </ul>
+        <p>requires modifying the Python code.</p>
+        <p>In production automation, this creates unnecessary risk. Every code change introduces another opportunity for regression, inconsistent behavior, or an avoidable deployment.</p>
 
         <h2>Configuration-Driven Design</h2>
-        <p>A better pattern is to separate the automation into two layers:</p>
-        <pre><code>{`Configuration\n    │\n    ▼\nPython Automation Engine\n    │\n    ├── Validate input\n    ├── Call API\n    ├── Process response\n    ├── Apply business logic\n    └── Return normalized result`}</code></pre>
-        <p>The engine contains reusable behavior. Configuration contains values that are expected to change.</p>
+        <p>Separate the automation into two layers:</p>
+        <pre><code>{`┌──────────────────────┐
+│     Configuration    │
+│                      │
+│ API URL              │
+│ Timeout              │
+│ Threshold            │
+│ Environment          │
+└──────────┬───────────┘
+           │
+           ▼
+┌──────────────────────┐
+│    Python Engine     │
+│                      │
+│ Validate             │
+│ Call API             │
+│ Process Response     │
+│ Apply Logic          │
+│ Return Result        │
+└──────────────────────┘`}</code></pre>
 
-        <h2>Example</h2>
-        <pre><code>{`config = {\n    "timeout": 30,\n    "malicious_threshold": 80\n}\n\ndef enrich_ioc(ioc, config):\n    response = requests.get(\n        f"https://api.example.com/ioc/{ioc}",\n        timeout=config["timeout"]\n    )\n\n    score = response.json()["score"]\n\n    if score >= config["malicious_threshold"]:\n        return "malicious"\n\n    return "clean"`}</code></pre>
-        <p>The same function can now operate with different policies without changing its core implementation.</p>
+        <p>The engine contains the behavior.</p>
+        <p>The configuration contains the variables.</p>
+        <p>This makes the same automation reusable across multiple scenarios without repeatedly changing the core implementation.</p>
+
+        <h2>A Simple Example</h2>
+        <p>Instead of:</p>
+        <pre><code>{`def enrich_ioc(ioc):
+    response = requests.get(
+        "https://api.example.com/ioc/" + ioc,
+        timeout=30
+    )
+
+    if response.json()["score"] > 80:
+        return "malicious"
+
+    return "clean"`}</code></pre>
+
+        <p>Use configuration:</p>
+        <pre><code>{`config = {
+    "timeout": 30,
+    "malicious_threshold": 80
+}
+
+def enrich_ioc(ioc, config):
+    response = requests.get(
+        f"https://api.example.com/ioc/{ioc}",
+        timeout=config["timeout"]
+    )
+
+    score = response.json()["score"]
+
+    if score >= config["malicious_threshold"]:
+        return "malicious"
+
+    return "clean"`}</code></pre>
+
+        <p>Now the same engine can support different policies:</p>
+        <pre><code>{`production = {
+    "timeout": 30,
+    "malicious_threshold": 80
+}
+
+high_sensitivity = {
+    "timeout": 30,
+    "malicious_threshold": 60
+}`}</code></pre>
+
+        <p>No change to the core logic is required.</p>
 
         <h2>Why This Matters in SOAR</h2>
-        <p>Configuration-driven automation is particularly useful when Python is embedded in security orchestration workflows.</p>
-        <pre><code>{`SOAR Alert\n   │\n   ▼\nPython Automation\n   │\n   ├── API endpoint\n   ├── Timeout\n   ├── Threshold\n   └── Environment\n   │\n   ▼\nSecurity API / EDR / TI Platform\n   │\n   ▼\nNormalized Result\n   │\n   ▼\nSOAR Decision`}</code></pre>
-        <p>The playbook can remain stable while configuration controls how the integration behaves. This is valuable for IOC enrichment, EDR searches, SIEM queries, vulnerability workflows, ticketing, and multi-tenant integrations.</p>
+        <p>This pattern becomes particularly useful when Python is used inside security automation.</p>
+        <pre><code>{`SOAR Alert
+    │
+    ▼
+Python Automation
+    │
+    ├── Configuration
+    │      ├── API endpoint
+    │      ├── Timeout
+    │      ├── Threshold
+    │      └── Environment
+    │
+    ▼
+Threat Intelligence API
+    │
+    ▼
+Normalized Result
+    │
+    ▼
+SOAR Decision`}</code></pre>
 
-        <h2>Keep Secrets Out of Configuration</h2>
-        <p>Configuration-driven does not mean putting credentials into JSON or YAML files. API keys, passwords, and tokens should be retrieved from an approved secrets manager, SOAR secret store, or environment-specific secret mechanism.</p>
-        <pre><code>{`{\n  "api_url": "https://api.example.com",\n  "timeout": 30,\n  "threshold": 80\n}`}</code></pre>
+        <p>The SOAR playbook can remain stable while configuration controls how the integration behaves.</p>
+        <p>This is especially useful for:</p>
+        <ul>
+          <li>IOC enrichment</li>
+          <li>SIEM queries</li>
+          <li>EDR searches</li>
+          <li>Vulnerability automation</li>
+          <li>Ticket creation</li>
+          <li>Cloud API operations</li>
+          <li>Multi-tenant integrations</li>
+        </ul>
+
+        <h2>Keep Secrets Out of Configuration Files</h2>
+        <p>Configuration-driven does not mean putting everything into JSON or YAML.</p>
+        <p>Avoid:</p>
+        <pre><code>{`{
+  "api_key": "my-secret-key"
+}`}</code></pre>
+
+        <p>Instead:</p>
+        <pre><code>{`{
+  "api_url": "https://api.example.com",
+  "timeout": 30,
+  "threshold": 80
+}`}</code></pre>
+
+        <p>Retrieve credentials from the SOAR secret store, environment variables, or an approved secrets manager.</p>
+        <p><strong>The principle is:</strong></p>
         <p><strong>Configuration controls behavior; secret management controls credentials.</strong></p>
 
-        <h2>A Practical Production Pattern</h2>
-        <pre><code>{`Input\n  ↓\nValidation\n  ↓\nConfiguration\n  ↓\nExecution\n  ↓\nNormalization\n  ↓\nDecision\n  ↓\nAudit / Result`}</code></pre>
-        <p>This separation improves testing, troubleshooting, reuse, and operational consistency. It also creates a cleaner foundation for turning individual scripts into reusable SOAR automation components.</p>
+        <h2>Practical Production Pattern</h2>
+        <p>A mature Python automation can use four layers:</p>
+        <pre><code>{`Input
+  ↓
+Validation
+  ↓
+Configuration
+  ↓
+Execution
+  ↓
+Normalization
+  ↓
+Decision
+  ↓
+Audit / Result`}</code></pre>
+
+        <p>This separation makes the automation easier to test, troubleshoot, reuse, and eventually convert into a reusable SOAR integration.</p>
 
         <h2>Key Takeaway</h2>
-        <p>Do not build one Python script for every automation requirement. Build a reusable automation engine and make its behavior configuration-driven.</p>
-        <p>That architectural shift turns a collection of scripts into a maintainable automation framework that can evolve with the environment instead of being rewritten for every change.</p>
+        <p><strong>Don't build one Python script for every automation requirement. Build a reusable automation engine and make its behavior configuration-driven.</strong></p>
+        <p>That small architectural change can turn a collection of scripts into a maintainable automation framework.</p>
       </article>
     </main>
   );
