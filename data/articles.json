@@ -1,5 +1,11 @@
 [
   {
+    "title": "Configuration-Driven Python Automation: From Scripts to Reusable Automation",
+    "description": "How separating automation logic from configuration makes Python workflows reusable, maintainable, and production-ready for security operations.",
+    "date": "2026-09-11",
+    "url": "/articles/configuration-driven-python-automation"
+  },
+  {
     "title": "SOAR API Tools: A Practical Framework for Reliable Integrations",
     "description": "A practical framework for secure, reliable SOAR API integrations using authentication, validation, retries, idempotency, and observability.",
     "date": "2026-09-10",
