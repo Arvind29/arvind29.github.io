@@ -1,5 +1,11 @@
 [
   {
+    "title": "API Automation: Handle API Failures the Right Way",
+    "description": "A practical guide to handling common API failures with retries, backoff, and controlled error handling in SOAR and Python automation.",
+    "date": "2026-09-13",
+    "url": "/articles/api-failures"
+  },
+  {
     "title": "Configuration-Driven Python Automation: From Scripts to Reusable Automation",
     "description": "How separating automation logic from configuration makes Python workflows reusable, maintainable, and production-ready for security operations.",
     "date": "2026-09-11",
