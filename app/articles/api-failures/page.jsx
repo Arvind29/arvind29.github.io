@@ -9,6 +9,11 @@ export default function ArticlePage() {
   return (
     <main className="article-page">
       <article className="article-content">
+        <style>{`
+          .article-diagram { overflow: hidden; }
+          .diagram-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+          .diagram-grid .diagram-node { min-width: 0; overflow-wrap: anywhere; word-break: break-word; }
+        `}</style>
         <Link href="/#articles" className="article-back">← Back to Articles</Link>
         <p className="eyebrow">API AUTOMATION · 13 SEP 2026</p>
         <h1>API Automation: Handle API Failures the Right Way</h1>
